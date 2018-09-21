@@ -15,6 +15,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
       wget && \
     rm -rf /var/lib/apt/lists/*
 
+# Install UTF-8 locale related packages
+RUN apt-get clean && apt-get update && apt-get install -y locales && locale-gen en_US.UTF-8
+
 # Install conda
 ENV CONDA_DIR /opt/conda
 ENV PATH $CONDA_DIR/bin:$PATH
